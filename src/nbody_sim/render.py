@@ -1,6 +1,5 @@
 import sys
 import numpy as np
-from vispy import app, scene
 from nbody_sim.api import Simulation, ureg
 
 import matplotlib.pyplot as plt
