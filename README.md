@@ -1,6 +1,6 @@
 # N-Body Physics Simulator
 
-A high-performance, interactive 3D N-body physics simulation engine written in Python. 
+A high-performance, interactive 3D N-body physics simulation engine written in Python.
 
 This project is designed for both accuracy and speed, utilizing JIT compilation and the Barnes-Hut algorithm to simulate celestial bodies in real-time, complete with interactive visualizations.
 
