@@ -1,0 +1,72 @@
+{
+  "name": "The Asteroid Belt",
+  "dt": 0.005,
+  "bodies": [
+    {
+      "type": "single",
+      "name": "Sun",
+      "mass": 1.0,
+      "mass_unit": "solar_mass",
+      "position": [0.0, 0.0, 0.0],
+      "pos_unit": "astronomical_unit",
+      "velocity": [0.0, 0.0, 0.0],
+      "vel_unit": "astronomical_unit / nbody_time",
+      "size": 25.0,
+      "colour": [1.0, 0.9, 0.5, 1.0]
+    },
+    {
+      "type": "single",
+      "name": "Earth",
+      "mass": 1.0,
+      "mass_unit": "earth_mass",
+      "position": [1.0, 0.0, 0.0],
+      "pos_unit": "astronomical_unit",
+      "velocity": [0.0, 1.0, 0.0],
+      "vel_unit": "astronomical_unit / nbody_time",
+      "size": 6.0,
+      "colour": [0.2, 0.5, 1.0, 1.0]
+    },
+    {
+      "type": "single",
+      "name": "Mars",
+      "mass": 0.107,
+      "mass_unit": "earth_mass",
+      "position": [1.52, 0.0, 0.0],
+      "pos_unit": "astronomical_unit",
+      "velocity": [0.0, 0.811, 0.0],
+      "vel_unit": "astronomical_unit / nbody_time",
+      "size": 4.5,
+      "colour": [1.0, 0.3, 0.1, 1.0]
+    },
+    {
+      "type": "single",
+      "name": "Jupiter",
+      "mass": 317.8,
+      "mass_unit": "earth_mass",
+      "position": [5.20, 0.0, 0.0],
+      "pos_unit": "astronomical_unit",
+      "velocity": [0.0, 0.438, 0.0],
+      "vel_unit": "astronomical_unit / nbody_time",
+      "size": 15.0,
+      "colour": [0.8, 0.6, 0.4, 1.0]
+    },
+    {
+      "type": "ring",
+      "name": "Main Belt",
+      "count": 3000,
+      "central_mass": 1.0,
+      "mass_mean": 0.00001,
+      "mass_std": 0.000005,
+      "mass_unit": "earth_mass",
+      "radius_mean": 2.7,
+      "radius_std": 0.3,
+      "radius_min": 2.1,
+      "radius_max": 3.3,
+      "pos_z_std": 0.1,        
+      "speed_variance_std": 0.05,
+      "vel_z_std": 0.02,
+      "size": 1.0,
+      "colour": [0.7, 0.7, 0.7, 0.4]
+    }
+  ]
+}

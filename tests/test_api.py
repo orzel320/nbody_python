@@ -5,7 +5,6 @@ from nbody_sim.api import Simulation, ureg
 
 def test_simulation_strips_units():
     """Test that the API accepts N-body units and strips them directly to floats."""
-    # User provides data exactly in our base N-body units
     masses = [1.0, 5.0] * ureg.solar_mass
     positions = [
         [0.0, 0.0],
@@ -19,11 +18,9 @@ def test_simulation_strips_units():
     sim = Simulation()
     sim.add_bodies(positions, velocities, masses)
     
-    # Internal state should be pure numpy arrays without units attached
     assert isinstance(sim._positions, np.ndarray)
     assert not isinstance(sim._positions, pint.Quantity)
     
-    # Because we passed the exact internal units, the magnitude should be unchanged
     assert sim._masses[0] == 1.0
     assert sim._positions[1][0] == 1.5
     assert sim._velocities[0][0] == 10.0
@@ -31,22 +28,17 @@ def test_simulation_strips_units():
 def test_simulation_unit_conversion():
     """Test that the API correctly scales SI/Metric units to N-body units."""
     
-    # 1 Earth mass in kg
     masses = [5.972e24] * ureg.kilogram
-    # 1 AU in meters (approx 1.496e11 meters)
     positions = [[1.495978707e11, 0.0]] * ureg.meter
-    # Earth's rough orbital speed (~30 km/s)
     velocities = [[30.0, 0.0]] * (ureg.kilometer / ureg.second)
     
     sim = Simulation()
     sim.add_bodies(positions, velocities, masses)
     
-    # Calculate the expected float values dynamically so the test isn't brittle
     expected_mass = (5.972e24 * ureg.kilogram).to(ureg.solar_mass).magnitude
     expected_pos = (1.495978707e11 * ureg.meter).to(ureg.astronomical_unit).magnitude
     expected_vel = (30.0 * ureg.kilometer / ureg.second).to(ureg.astronomical_unit / ureg.nbody_time).magnitude
     
-    # Assert the internal state matches the scaled values
     assert sim._masses[0] == pytest.approx(expected_mass)
     assert sim._positions[0][0] == pytest.approx(expected_pos)
     assert sim._velocities[0][0] == pytest.approx(expected_vel)

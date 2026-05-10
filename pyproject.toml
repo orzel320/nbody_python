@@ -19,22 +19,31 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Install these using `pip install -e .[dev]`
+vis = [
+    "matplotlib>=3.10.8",
+    "ipympl>=0.9.3",
+    "k3d>=2.16.0",
+    "jupyter>=1.1.1"
+]
+
+test = [
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0"
+]
+
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.7.6"
+]
+
 dev = [
-    "pytest>=7.0",
-    "pytest-cov>=4.0",
-    "mkdocs>=1.5",
-    "mkdocs-material>=9.0",
-    "jupyter>=1.0",
-    "matplotlib>=3.7" # For visualizing the demo notebook
+    "nbody-sim[vis,test,docs]"
 ]
 
 [tool.setuptools_scm]
-# This enables automated git-coupled versioning
 write_to = "src/nbody_sim/_version.py"
 
 [tool.pytest.ini_options]
-# Default pytest flags: run coverage on the src directory
 addopts = "--cov=src/nbody_sim --cov-report=xml --cov-report=term-missing"
 testpaths = ["tests"]
 pythonpath = ["src"]
